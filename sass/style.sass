@@ -1,0 +1,92 @@
+// ЗАГАЛЬНЕ
+// @import "resets.scss"
+@import "normalizez.scss"
+
+$main-color:  #8D98AA
+$accent-color: #284B80
+$bg-color: #E5E5E5
+$drark-accent-color: #292B2E
+
+*
+    box-sizing: border-box
+
+body
+    font-family: "Inter", sans-serif
+    font-weight: 400
+    font-style: normal
+    background-color: $bg-color
+    color: $main-color
+
+h1,h2,h3,h4,h5,h6,p, body
+    margin: 0
+h1
+    font-weight: 900
+    margin-bottom: 20px
+    color: $accent-color    
+
+    
+.inter
+  font-family: "Inter", sans-serif
+  font-style: normal
+
+.nunito-sans
+  font-family: "Nunito Sans", sans-serif
+  font-style: normal
+
+
+.cards-container
+    display: flex
+    flex-direction: column
+    align-items: center
+    max-width: 1396px
+    margin: 0 auto
+    gap: 25px
+
+img
+    width: 450px
+    height: 240px
+    border-radius: 16px
+
+.card
+    display: flex
+    flex-direction: row
+    align-items: center
+    gap: 33px
+    max-width: 1080px
+    background-color: #fff
+    padding: 20px
+    border-radius: 24px
+    box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.08)
+    &__title
+        font-size: 32px
+        font-weight: 600
+        line-height: 100%
+        margin-bottom: 24px
+        color: $accent-color
+    &__text
+        font-size: 20px
+        font-weight: 300
+        line-height: 140%
+        margin-bottom: 55px
+
+.profile
+    display: flex
+    flex-direction: row
+    gap: 24px
+    align-items: center
+    &__title
+        margin-bottom: 3px
+        font-size: 20px
+        font-weight: 600
+        line-height: 140%
+        color: $accent-color
+    &__text
+        font-size: 20px
+        font-weight: 300
+        line-height: 140%
+
+        
+
+.fa-user
+    font-size: 63px
+    color: $accent-color
