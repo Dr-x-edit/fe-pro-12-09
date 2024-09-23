@@ -275,19 +275,12 @@ class HomeWork {
 
     switch (this.planetName) {
       case "Меркурій":
-        return console.log(`${this.planetName} in our solar system!`);
       case "Венера":
-        return console.log(`${this.planetName} in our solar system!`);
       case "Земля":
-        return console.log(`${this.planetName} in our solar system!`);
       case "Марс":
-        return console.log(`${this.planetName} in our solar system!`);
       case "Юпітер":
-        return console.log(`${this.planetName} in our solar system!`);
       case "Сатурн":
-        return console.log(`${this.planetName} in our solar system!`);
       case "Уран":
-        return console.log(`${this.planetName} in our solar system!`);
       case "Нептун":
         return console.log(`${this.planetName} in our solar system!`);
       default:
