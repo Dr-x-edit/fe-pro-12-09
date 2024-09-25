@@ -110,16 +110,16 @@ console.log(multiplyValues(1, 1, 1));
 
 //  to function declaration
 function multiplyValuesDeclaration(a, b, c) {
-  console.log(`${a * b * c}`);
+  return a * b * c;
 }
 
-multiplyValuesDeclaration(2, 2, 2);
+console.log(multiplyValuesDeclaration(2, 2, 2));
 
 // to function expressiion
 const multiplyValuesExpression = function (a, b, c) {
-  console.log(`${a * b * c}`);
+  return a * b * c;
 };
-multiplyValuesExpression(3, 3, 3);
+console.log(multiplyValuesExpression(3, 3, 3));
 
 // =================================
 // Task4
