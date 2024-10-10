@@ -182,14 +182,19 @@ typeOfArgument([1, 1, 2]);
 // Виведіть результат у консоль.
 
 function returnUserAge() {
-  let userAge = +prompt(`Введіть свій вік, будь ласка:`);
+  const year = new Date().toLocaleString("uk-UA", {
+    year: "numeric",
+  });
+  let userAge = +prompt(
+    `Введіть свій вік, будь ласка для розрахунку вашого року народження:`
+  );
   while (isNaN(userAge)) {
     alert(`Введіть вік числом`);
     userAge = +prompt(`Введіть свій вік, будь ласка:`);
   }
 
-  console.log(`Ваш вік ${userAge} років`);
-  createHTMLElemet(bodyTag, "p", `Ваш вік ${userAge} років`);
+  console.log(`Рік вашого народження ${year - userAge}`);
+  createHTMLElemet(bodyTag, "p", `Рік вашого народження ${year - userAge}`);
 }
 
 const titleSixthTask = createHTMLElemet(
