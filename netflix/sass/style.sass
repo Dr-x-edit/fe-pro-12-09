@@ -1,0 +1,624 @@
+// ЗАГАЛЬНЕ
+// @import "resets.scss"
+@import "normalizez.scss"
+
+$main-color:  #ffffff
+$accent-color: #A7A6A6
+$title-color: #C8C8C8
+
+@font-face
+    font-family: "KyivType"
+    src: url(../fonts/KyivType.ttf)
+    font-display: swap
+    font-weight: 500
+    font-style: normal
+
+.inter
+  font-family: "Inter", sans-serif
+  font-style: normal
+
+
+*
+    box-sizing: border-box
+
+h1,h2,h3,h4,h5,h6,p,body
+    margin: 0
+
+body
+    display: flex
+    flex-direction: column
+    position: relative
+    background: url(../img/background.png) top/cover no-repeat
+
+header
+    display: flex
+    padding: 42px 0 0 0
+    margin-bottom: 116px
+
+main
+    display: flex
+
+
+.header
+    &__wrapper
+        display: flex
+        justify-content: space-between
+        width: 96%
+        margin: 0 auto
+    &__logo-wrapper
+        display: flex
+        align-self: flex-end
+        // width: 27%
+    &__logo
+        margin-right: 26px
+    &__text
+        align-self: center
+        font-family: "KyivType"
+        font-size: 24px
+        color: $title-color
+        padding-left: 26px
+        border-left: 3px solid $main-color
+    &__profile-wrapper
+        display: flex
+        justify-content: space-between
+        align-items: center
+        // width: 10%
+    &__search
+        background: transparent
+        border: none
+        margin-right: 45px
+
+
+.fa-magnifying-glass
+    font-size: 43px
+    color: $main-color
+
+.main
+    &__wrapper
+        display: flex
+        justify-content: space-between
+        width: 96%
+        margin: 0 auto
+        // height: 700px // test
+    &__content-wrapper
+        display: flex
+        justify-content: flex-start
+        flex-direction: column
+        width: 57%
+    &__content-wrapper h1
+        font-size: 4rem
+        font-weight: 800
+        line-height: 7.5rem
+        // letter-spacing: 5.5px
+        letter-spacing: calc(64px * 0.055)
+        color: $main-color
+    &__sub-title
+        font-size: 2rem
+        font-weight: 500
+        line-height: 39px
+        color: $main-color
+    &__sub-title span
+        display: inline-block
+        padding-right: 10px
+        margin-right: 10px
+        border-right: 3px solid $main-color
+    &__title
+        margin-bottom: 1rem
+    &__description  
+        color: $main-color
+    &__rating
+        font-size: 2rem
+
+.description
+    display: inline-block
+    font-size: 1.9rem
+    margin-bottom: 8px
+    &__title
+        font-weight: 500
+        line-height: 1px
+        padding-right: 10px
+        margin-right: 10px
+        border-right: 3px solid $main-color
+    &__title:last-child
+        padding-right: 0
+        margin-right: 0
+        border-right: none
+    &__director-data, &__seasons-data
+        font-size: 1.8rem
+        font-weight: 400
+        line-height: 1px
+        color: $accent-color
+        
+.detail-description
+    width: 91%
+    font-size: 1.5rem
+    font-weight: 400
+    line-height: 1.8rem
+    color: $accent-color
+    margin-bottom: 30px
+.br
+    display: none
+.rating
+    margin-bottom: 53px
+.stars-fill
+    color: #FFEA2B
+.stars
+    color: $main-color
+
+.buttons
+    display: flex
+    gap: 90px
+    margin-bottom: 53px
+    &__stream, &__episod
+        display: flex
+        font-size: 1.4rem
+        font-weight: 500
+        line-height: 141.52%
+        color: $main-color
+    &__stream
+        display: flex
+        align-items: center
+        border-radius: 10px
+        background: rgb(213, 13, 31)
+        border: none
+        padding: 16px 49px 16px 34px
+        gap: 10px
+    &__stream i
+        font-size: 28px
+    &__episod
+        color: $main-color
+        padding: 16px 58px
+        border: 3px solid $main-color
+        border-radius: 10px
+        background: transparent
+
+.nav-container
+    display: flex
+    width: 100%
+    justify-content: space-between
+    margin-bottom: 1rem
+    &__title
+        display: flex
+        align-self: flex-start
+        color: $main-color
+        font-size: 22px
+        font-weight: 800
+        line-height: 144.52%
+        letter-spacing: 13.5%
+    &__buttons
+        display: flex
+        align-items: center
+        gap: 24px
+    &__buttons button
+        display: flex
+        justify-content: center
+        align-items: center
+        min-width: 38px
+        height: 38px
+        border: 1.54px solid $accent-color
+        border-radius: 25px
+        background: transparent
+        color: $accent-color
+    &__buttons button:hover
+        scale: 1.08
+        border: 1.54px solid $main-color
+        color: $main-color
+
+.popular-films
+    display: flex
+    flex-direction: column
+    padding-bottom: 50px
+.card-wrapper
+    display: flex
+    justify-content: space-between
+    width: 100%
+.card-item
+    display: flex
+    width: 16%
+    height: auto
+.card-item img
+    width: 100%
+    height: auto
+
+.age-restriction
+    position: fixed
+    right: 0
+    bottom: 10%
+    padding: 15px 68px 15px 28px
+    background: #7E828880
+    border-left: 33px solid #D40D1F
+
+.age-restriction p
+    font-size: 1.5rem
+    font-weight: 500
+    line-height: 141.52%
+    color: $main-color
+
+@media (min-width: 820px) and (max-width: 1168px)
+    body
+        display: flex
+        flex-direction: column
+        position: relative
+        background: url(../img/background.png) right/cover no-repeat
+    .main
+        &__wrapper
+            display: flex
+            justify-content: space-between
+            width: 96%
+            min-height: 100vh
+            margin: 0 auto
+            // height: 700px // test
+        &__content-wrapper
+            display: flex
+            justify-content: flex-start
+            flex-direction: column
+            width: 100%
+        &__wrapper-info
+            background: linear-gradient(233deg, rgba(0,0,0,0.333858543417367) 50%, rgba(255,255,255,0.1601890756302521) 100%)
+        &__content-wrapper h1
+            font-size: 3rem
+            font-weight: 800
+            line-height: 90px
+            // letter-spacing: 5.5px
+            letter-spacing: calc(64px * 0.055)
+        &__sub-title
+            font-size: 1.5rem
+        &__rating
+            font-size: 2.5rem
+
+    .main-info
+        display: flex
+        flex-direction: column
+    .description
+        font-size: 1.5rem
+        &__director-data, &__seasons-data
+            font-size: 1.6rem
+            font-weight: 400
+            line-height: 1px
+            color: $accent-color
+    .detail-description
+        width: 91%
+        font-size: 1.5rem
+    .br
+        display: none    
+    .nav-container
+        display: flex
+        width: 100%
+        justify-content: space-between
+        padding-top: 1rem
+        margin-bottom: 1rem
+        &__title
+            display: flex
+            align-self: flex-start
+            color: $main-color
+            font-size: 1.6rem
+            // font-size: 26px
+            font-weight: 800
+            line-height: 144.52%
+            letter-spacing: 13.5%
+        &__buttons
+            display: none
+            align-items: center
+            gap: 24px
+
+    .popular-films
+        padding-bottom: 0
+
+    .card-wrapper
+        display: flex
+        flex-direction: row
+        flex-wrap: wrap
+        justify-content: center
+        gap: 30px
+        width: 100%
+        margin-bottom: 3rem
+
+    .card-item
+        display: flex
+        width: 30%
+        height: auto
+    .age-restriction
+        position: absolute
+        right: 2%
+        bottom: auto
+        padding: 15px 68px 15px 28px
+        top: 232px
+        border-radius: 5px
+
+@media (min-width: 688px) and (max-width: 819px)
+
+    body
+        display: flex
+        flex-direction: column
+        position: relative
+        background: url(../img/background.png) right/cover no-repeat
+    .header
+        &__wrapper
+            display: flex
+            flex-direction: column
+            width: 96%
+            margin: 0 auto
+        &__logo-wrapper
+            display: flex
+            align-self: center
+        &__logo
+            margin-right: 26px
+        &__text
+            align-self: center
+            font-family: "KyivType"
+            font-size: 1.5rem
+            color: $title-color
+            padding-left: 26px
+            border-left: 3px solid $main-color
+        &__profile-wrapper
+            display: flex
+            justify-content: space-between
+            align-items: center
+        &__profile-logo
+            margin-right: 45px
+        &__search
+            order: 3
+            background: transparent
+            border: none
+            margin-right: 0
+
+    .main
+        &__wrapper
+            display: flex
+            justify-content: space-between
+            width: 96%
+            min-height: 100vh
+            margin: 0 auto
+            // height: 700px // test
+        &__content-wrapper
+            display: flex
+            justify-content: flex-start
+            flex-direction: column
+            width: 100%
+        &__wrapper-info
+            background: linear-gradient(233deg, rgba(0,0,0,0.333858543417367) 50%, rgba(255,255,255,0.1601890756302521) 100%)
+        &__content-wrapper h1
+            font-size: 3rem
+            font-weight: 800
+            line-height: 90px
+            // letter-spacing: 5.5px
+            letter-spacing: calc(64px * 0.055)
+        &__sub-title
+            font-size: 1.5rem
+        &__rating
+            font-size: 2.5rem
+
+    .main-info
+        display: flex
+        flex-direction: column
+    .description
+        font-size: 1.5rem
+        &__director-data, &__seasons-data
+            font-size: 1.6rem
+            font-weight: 400
+            line-height: 1px
+            color: $accent-color
+    .detail-description
+        width: 91%
+        font-size: 1.5rem
+    .br
+        display: none
+        
+    .nav-container
+        display: flex
+        width: 100%
+        justify-content: center
+        padding-top: 1rem
+        margin-bottom: 1rem
+        &__title
+            display: flex
+            align-self: flex-start
+            color: $main-color
+            font-size: 1.6rem
+            font-weight: 800
+            line-height: 144.52%
+            letter-spacing: 13.5%
+        &__buttons
+            display: none
+            align-items: center
+            gap: 24px
+
+    .popular-films
+        padding-bottom: 0
+
+    .card-wrapper
+        display: flex
+        flex-direction: row
+        flex-wrap: wrap
+        justify-content: center
+        gap: 30px
+        width: 100%
+        margin-bottom: 3rem
+
+    .card-item
+        display: flex
+        width: 40%
+        height: auto
+    .age-restriction
+        position: absolute
+        padding: 15px 34px 15px 28px
+        right: 2%
+        bottom: auto
+        top: 281px
+        border-radius: 5px
+
+@media (min-width: 320px) and (max-width: 687px)
+
+    main
+        order: 2
+
+    body
+        display: flex
+        flex-direction: column
+        position: relative
+        background: url(../img/background.png) right/cover no-repeat
+        background-position: 86% 0
+    .header
+        &__wrapper
+            display: flex
+            width: 96%
+            margin: 0 auto
+        &__logo-wrapper
+            display: flex
+            flex-direction: column
+            align-self: center
+        &__logo
+            margin-right: 26px
+        &__text
+            align-self: center
+            font-family: "KyivType"
+            font-size: 1.5rem
+            color: $title-color
+            padding-left: 26px
+            border-left: 3px solid $main-color
+        &__profile-wrapper
+            display: flex
+            justify-content: space-between
+            align-items: center
+        &__profile-logo
+            margin-bottom: 0
+            display: none
+        &__search
+            background: transparent
+            border: none
+            margin-right: 0
+
+    .main
+        &__wrapper
+            display: flex
+            justify-content: space-between
+            width: 96%
+            min-height: 100vh
+            margin: 0 auto
+            // height: 700px // test
+        &__content-wrapper
+            display: flex
+            justify-content: flex-start
+            flex-direction: column
+            width: 100%
+        &__wrapper-info
+            background: linear-gradient(233deg, rgba(0,0,0,0.333858543417367) 50%, rgba(255,255,255,0.1601890756302521) 100%)
+        &__content-wrapper h1
+            text-align: center
+            font-size: 2.2rem
+            font-weight: 800
+            line-height: 90px
+            // letter-spacing: 5.5px
+            letter-spacing: calc(64px * 0.055)
+
+        &__sub-title
+            text-align: center
+            font-size: 1.2rem
+        &__rating
+            display: flex
+            justify-content: center
+            font-size: 2rem
+
+    .main-info
+        display: flex
+        flex-direction: column
+    .description
+        text-align: center
+        font-size: 1.2rem
+        margin-bottom: 1rem
+        &__title
+            border-right: none
+        &__director-data, &__seasons-data
+            align-self: center
+            font-size: 1.2rem
+            font-weight: 400
+            line-height: 1px
+            color: $accent-color
+    .detail-description
+        text-align: justify
+        width: 91%
+        margin: 0 auto
+        font-size: 1.1rem
+
+    .br
+        display: block
+    .buttons
+        display: flex
+        flex-direction: column
+        gap: 2rem
+        margin-bottom: 53px
+        &__stream, &__episod
+            display: flex
+            justify-content: center
+            font-size: 1.4rem
+            font-weight: 500
+            line-height: 141.52%
+            color: $main-color
+        &__stream
+            display: flex
+            align-items: center
+            border-radius: 10px
+            background: rgb(213, 13, 31)
+            border: none
+            padding: 16px 49px 16px 34px
+            gap: 10px
+        &__stream i
+            font-size: 28px
+        &__episod
+            color: $main-color
+            padding: 16px 58px
+            border: 3px solid $main-color
+            border-radius: 10px
+            background: transparent
+        
+    .nav-container
+        display: flex
+        width: 100%
+        justify-content: center
+        padding-top: 1rem
+        margin-bottom: 1rem
+        &__title
+            display: flex
+            align-self: flex-start
+            color: $main-color
+            font-size: 1.6rem
+            font-weight: 800
+            line-height: 144.52%
+            letter-spacing: 13.5%
+        &__buttons
+            display: none
+            align-items: center
+            gap: 24px
+
+    .popular-films
+        padding-bottom: 0
+
+    .card-wrapper
+        display: flex
+        flex-direction: row
+        flex-wrap: wrap
+        justify-content: center
+        gap: 30px
+        width: 100%
+        margin-bottom: 3rem
+
+    .card-item
+        display: flex
+        width: 50%
+        height: auto
+    .age-restriction
+        text-align: center
+        width: 56%
+        margin: 0 auto
+        order: 1
+        position: static
+        padding: 15px 34px 15px 28px
+        right: 28%
+        bottom: auto
+        top: 143px
+        border-radius: 5px
+        border-left: 33px solid #D40D1F
+        border-right: 33px solid #D40D1F
+        margin-bottom: 1rem
+
+
