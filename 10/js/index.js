@@ -195,6 +195,7 @@ btnNavList.after(ulEl);
 arrNameLink.forEach((element) => {
   let liEl = document.createElement("li");
   let linkEl = document.createElement("a");
+  linkEl.setAttribute("href", "#");
   linkEl.innerText = element;
   liEl.append(linkEl);
   ulEl.appendChild(liEl);
