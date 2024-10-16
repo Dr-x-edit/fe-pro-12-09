@@ -57,7 +57,7 @@ const ratingArray = [5, 4, 4, 5, 5, 3];
 
 // const ratingArray = [5, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 5, 5, 3];
 
-const intRating = Math.floor(
+let intRating = Math.floor(
   ratingArray.reduce((acc, i) => acc + i) / ratingArray.length
 );
 
@@ -65,13 +65,23 @@ const ratingEl = document.querySelector(".rating");
 
 let ratingTags = document.querySelectorAll(".rating .fa-star");
 
-for (let i = 1; i <= ratingTags.length; i++) {
-  if (i <= intRating) {
-    ratingTags[i - 1].setAttribute("class", "fa-solid fa-star stars-fill");
-  } else {
-    ratingTags[i - 1].setAttribute("class", "fa-regular fa-star stars");
+function setNewRating(intRating) {
+  for (let i = 1; i <= ratingTags.length; i++) {
+    if (i <= intRating) {
+      ratingTags[i - 1].setAttribute(
+        "class",
+        `fa-solid fa-star stars-fill ${i}-star`
+      );
+    } else {
+      ratingTags[i - 1].setAttribute(
+        "class",
+        `fa-regular fa-star stars ${i}-star`
+      );
+    }
   }
 }
+
+setNewRating(intRating);
 
 // Додаємо динамічно картки
 
@@ -94,3 +104,51 @@ for (let i = 0; i < descArray.length; i++) {
 `;
   cardWrapper.insertAdjacentHTML("beforeend", cardItem);
 }
+
+// Створюємо можливість встановити рейтинг, бзер вибирає
+// кількість зірок якщо відводить курсор то відображається поточний рейтинг
+// кривувато але працює
+
+ratingEl.addEventListener("mouseover", (e) => {
+  if (e.target.classList.contains("fa-star")) {
+    for (let i = 1; i <= ratingTags.length; i++) {
+      if (i <= parseInt(e.target.classList[3])) {
+        ratingTags[i - 1].setAttribute(
+          "class",
+          `fa-solid fa-star stars-fill ${i}-star`
+        );
+      } else {
+        ratingTags[i - 1].setAttribute(
+          "class",
+          `fa-regular fa-star stars ${i}-star`
+        );
+      }
+    }
+  } else {
+    let intRating = Math.floor(
+      ratingArray.reduce((acc, i) => acc + i) / ratingArray.length
+    );
+    setNewRating(intRating);
+  }
+});
+
+// Оновлення рейтингу і бла бла бла,
+ratingEl.addEventListener("click", (e) => {
+  if (!e.target.classList.contains("rating")) {
+    let userRating = parseInt(e.target.classList[3]);
+
+    let intRating = Math.floor(
+      ratingArray.reduce((acc, i) => acc + i) / ratingArray.length
+    );
+
+    ratingArray.push(userRating);
+
+    console.log(userRating);
+
+    console.log(ratingArray);
+
+    setNewRating(intRating);
+
+    console.log(intRating);
+  }
+});
