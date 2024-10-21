@@ -312,10 +312,16 @@ btnConvert.addEventListener("click", function (e) {
     `https://currencydatafeed.com/api/data.php?currency=${convertedCurrency.value}/${convertCurrency.value}&token=hfaxwix7jtrz6liwjh0x`
   ).then(function (data) {
     console.log(data);
-    fieldConvertResult.innerHTML = `${userInputSumm.value} ${
-      convertedCurrency.value
-    } дорівнює ${(
-      parseFloat(userInputSumm.value) * data["currency"][0].value
+    fieldConvertResult.innerHTML = `${
+      userInputSumm.value == ""
+        ? +userInputSumm.getAttribute("placeholder")
+        : userInputSumm.value
+    } ${convertedCurrency.value} дорівнює ${(
+      parseFloat(
+        userInputSumm.value == ""
+          ? +userInputSumm.getAttribute("placeholder")
+          : userInputSumm.value
+      ) * data["currency"][0].value
     ).toFixed(2)} ${convertCurrency.value}`;
   });
 });
@@ -475,14 +481,16 @@ const options = {
   threshold: 0,
 };
 const observer = new IntersectionObserver(callBack, options);
+let gameObjSizeX = 47;
+let gameObjSizeY = 47;
 
 observer.observe(document.querySelector(".item"));
 
 playSecondEl.addEventListener("mousedown", function (e) {
   playingSecondField.addEventListener("mousemove", function d(ev) {
     console.log(ev);
-    let topPosPlayEl = ev.layerY - 47;
-    let leftPosPlayEl = ev.layerX - 47;
+    let topPosPlayEl = ev.layerY - gameObjSizeY;
+    let leftPosPlayEl = ev.layerX - gameObjSizeX;
 
     playSecondEl.style.cssText += `
     top: ${topPosPlayEl}px;
