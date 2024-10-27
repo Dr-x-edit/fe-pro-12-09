@@ -379,6 +379,7 @@ let list = document.querySelector(".list-group");
 submitBtn.addEventListener("click", function (e) {
   e.preventDefault();
   let firstItem = document.querySelector(".start");
+  console.log(firstItem == null);
   if (firstItem == null) {
     toDo = `
     <li class="list-group-item">
