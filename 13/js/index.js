@@ -276,8 +276,6 @@ window.addEventListener("load", () => {
         list.insertAdjacentHTML("beforeend", toDo);
       }
     }
-  } else {
-    legend.insertAdjacentHTML("afterend", listToDo);
   }
 });
 
