@@ -208,30 +208,32 @@ let list = document.querySelector(".list-group-tasks");
 console.log(list);
 
 function createTask() {
-  let firstItem = document.querySelector(".start");
-  if (firstItem == null) {
-    toDo = `
-    <li class="list-group-item">
-    <div class="d-flex justify-content-between align-items-center grid gap-3">
-      <p class="mb-0">${userTask.value}</p> 
-      <button class="btn btn-danger">X</button>
-    </div>
-    </li>
-    `;
-    list.insertAdjacentHTML("beforeend", toDo);
-    userTask.value = "";
-  } else {
-    firstItem.remove();
-    toDo = `
-    <li class="list-group-item">
-    <div class="d-flex justify-content-between align-items-center grid gap-3">
-      <p class="mb-0">${userTask.value}</p> 
-      <button class="btn btn-danger">X</button>
-    </div>
-    </li>
-    `;
-    list.insertAdjacentHTML("beforeend", toDo);
-    userTask.value = "";
+  if (userTask.value !== "") {
+    let firstItem = document.querySelector(".start");
+    if (firstItem == null) {
+      toDo = `
+      <li class="list-group-item">
+      <div class="d-flex justify-content-between align-items-center grid gap-3">
+        <p class="mb-0">${userTask.value}</p> 
+        <button class="btn btn-danger">X</button>
+      </div>
+      </li>
+      `;
+      list.insertAdjacentHTML("beforeend", toDo);
+      userTask.value = "";
+    } else {
+      firstItem.remove();
+      toDo = `
+      <li class="list-group-item">
+      <div class="d-flex justify-content-between align-items-center grid gap-3">
+        <p class="mb-0">${userTask.value}</p> 
+        <button class="btn btn-danger">X</button>
+      </div>
+      </li>
+      `;
+      list.insertAdjacentHTML("beforeend", toDo);
+      userTask.value = "";
+    }
   }
 }
 
