@@ -124,9 +124,10 @@ class datailInformationApp {
       {}
     );
 
-    submittBtn.addEventListener("click", () => {
+    submittBtn.addEventListener("click", async (e) => {
+      e.preventDefault();
       let uData = this.getUserInput();
-      let data = this.getUserInfo(uData);
+      let data = await this.getUserInfo(uData);
       console.log(myModal);
       myModal.show();
 
