@@ -119,10 +119,16 @@ class datailInformationApp {
     let wrapperEl = this.createInputForm();
     let submittBtn = document.querySelector(".msg-sender");
     this.renderModalWindow(wrapperEl);
+    const myModal = new bootstrap.Modal(
+      document.getElementById("exampleModal"),
+      {}
+    );
 
     submittBtn.addEventListener("click", () => {
       let uData = this.getUserInput();
       let data = this.getUserInfo(uData);
+      console.log(myModal);
+      myModal.show();
 
       let clearBtn = document.querySelector(".btn-clear");
 
