@@ -1,4 +1,5 @@
 import { uppercase, reverseString } from "./stringUtilities.js";
+import { fetchMovieDetails, fetchTrendingMovies } from "./apiService.js";
 
 // Завдання 1: Отримання даних користувача з JSONPlaceholder
 // Створіть функцію, яка використовує async/await для отримання даних про конкретного користувача за id JSONPlaceholder.
@@ -422,3 +423,128 @@ class renderSVG {
 }
 
 const newSVG = new renderSVG(1, 1, 200, 1, "red", 5);
+
+// Додадткова робота:
+// Перейдіть на TMDb API та зареєструйтесь, щоб отримати безкоштовний API ключ.
+
+class renderListFilms {
+  constructor() {
+    this.runApp();
+  }
+  renderListWrapper() {
+    let previousEl = document.querySelector("body");
+    let listWrapper = document.createElement("div");
+
+    listWrapper.setAttribute("class", "container input-list-wrapper");
+    listWrapper.style.marginBottom = "80px";
+
+    previousEl.appendChild(listWrapper);
+  }
+
+  renderFilmsList() {
+    let listWrapper = document.querySelector(".input-list-wrapper");
+    let listEl = `
+    <ul class="list-group">
+      <li class="list-group-item active" aria-current="true">Top films:</li>
+
+    </ul>
+    `;
+    listWrapper.insertAdjacentHTML("afterbegin", listEl);
+  }
+
+  async getTopFilms() {
+    let data = await fetchTrendingMovies();
+
+    console.log(data);
+
+    return data;
+  }
+
+  async renderFilms(filmsArr) {
+    let activeEl = document.querySelector(".list-group-item");
+    console.log(filmsArr);
+    filmsArr.forEach((film) => {
+      let filmEl = `<a href="#" class="list-group-item list-group-item-action ${film.id}-id" data-bs-toggle="modal" data-bs-target="#exampleModal2">${film.title}</a>`;
+      activeEl.insertAdjacentHTML("afterend", filmEl);
+    });
+  }
+
+  renderModalWindow(el) {
+    let activeEl = document.querySelector(".list-group");
+    console.log(activeEl);
+    let modalWindowEl = `
+    <div
+    class="modal fade"
+    id="exampleModal2"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Detail information about film</h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body modal-body-filmss"></div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary btn-clears"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+`;
+    activeEl.insertAdjacentHTML("afterend", modalWindowEl);
+  }
+
+  getActiveFilm() {
+    let links = document.querySelector(".list-group");
+
+    links.addEventListener("click", async (e) => {
+      e.preventDefault();
+      let filmId = parseInt(e.target.classList[2]);
+      console.log(filmId);
+      let filmDetail = await fetchMovieDetails(filmId);
+      let bodyModalWindow = document.querySelector(".modal-body-filmss");
+      console.log(bodyModalWindow);
+      let filmCard = `
+      <div class="card" style="w-100">
+        <img src="https://image.tmdb.org/t/p/w500/${filmDetail.poster_path}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">${filmDetail.title}title</h5>
+          <p class="card-text">${filmDetail.overview}</p>
+          <a href="${filmDetail.homepage}" class="btn btn-primary">Go to film</a>
+        </div>
+      </div>
+      `;
+
+      bodyModalWindow.innerHTML = filmCard;
+
+      console.log(filmDetail);
+    });
+  }
+
+  async runApp() {
+    this.renderListWrapper();
+    this.renderFilmsList();
+    let filmsArr = await this.getTopFilms();
+    await this.renderFilms(filmsArr);
+    this.renderModalWindow();
+    this.getActiveFilm();
+  }
+}
+
+// <li class="list-group-item">A second item</li>
+
+const filmApp = new renderListFilms();
