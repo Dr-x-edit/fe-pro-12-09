@@ -159,7 +159,7 @@ class detailFilmInfoApp {
     let inputWrapperEl = document.querySelector(".input-wrapper");
     let inputWrapper = document.createElement("div");
 
-    inputWrapper.setAttribute("class", "container input-film-wrapper");
+    inputWrapper.setAttribute("class", "container input-film-wrapper el");
     inputWrapper.style.marginBottom = "80px";
 
     inputWrapperEl.after(inputWrapper);
@@ -327,3 +327,98 @@ const filmDetail = new detailFilmInfoApp();
 // +++++++++++++++++++++++++++++++++++++++++++++
 // ЗАВДАННЯ ВИКОНАНО ВИЩЕ
 // +++++++++++++++++++++++++++++++++++++++++++++
+
+// Завдання 4:
+// Створіть канвас і за допомогою JavaScript малюйте на ньому 3 прямокутники  які пересікаються. Використовуйте метод fillRect для цього.
+// https://bucephalus.org/text/CanvasHandbook/CanvasHandbook.html#fillrect-x-y-w-h
+
+class canvasApp {
+  constructor() {
+    this.renderCanvas();
+  }
+
+  renderCanvas() {
+    let previousEl = document.querySelector("body");
+    let canvasWrapper = document.createElement("div");
+
+    canvasWrapper.setAttribute("class", "container input-canvas-wrapper ");
+    canvasWrapper.style.marginBottom = "80px";
+
+    previousEl.append(canvasWrapper);
+
+    canvasWrapper = document.querySelector(".input-canvas-wrapper");
+
+    let canvasEl = document.createElement("canvas");
+    canvasEl.style.cssText = `
+      width: 800px;
+      height: 500px;
+      border: 1px solid blue
+    `;
+
+    canvasWrapper.append(canvasEl);
+
+    canvasEl = document.querySelector("canvas");
+
+    const ctx = canvasEl.getContext("2d");
+
+    ctx.fillStyle = "black";
+    ctx.fillRect(25, 25, 50, 50);
+    ctx.fillStyle = "red";
+    ctx.fillRect(55, 55, 50, 50);
+
+    ctx.lineWidth = 12.0;
+    let lg = ctx.createLinearGradient(45, 58, 50, 50);
+    lg.addColorStop(0, "red");
+    lg.addColorStop(1, "yellow");
+    ctx.strokeStyle = lg;
+    ctx.strokeRect(30, 50, 70, 70);
+  }
+}
+
+const newCanwas = new canvasApp();
+
+// Завдання 5: Динамічне створення SVG-лінії
+// Створіть функцію на JavaScript, яка додає на сторінку SVG-елемент з лінією, параметри якої (початкова та кінцева точки, колір, товщина) передаються як аргументи функції.
+
+class renderSVG {
+  constructor(startPointX, startPointY, endPointX, endPointY, color, width) {
+    this.startPointX = startPointX;
+    this.startPointY = startPointY;
+    this.endPointX = endPointX;
+    this.endPointY = endPointY;
+    this.color = color;
+    this.width = width;
+    this.renderSVGEl();
+  }
+  renderSVGEl() {
+    let previousEl = document.querySelector("body");
+    let svgWrapper = document.createElement("div");
+
+    const svgNs = "http://www.w3.org/2000/svg";
+
+    svgWrapper.setAttribute("class", "container input-svg-wrapper ");
+    svgWrapper.style.marginBottom = "80px";
+
+    previousEl.append(svgWrapper);
+
+    let svgEl = document.createElementNS(svgNs, "svg");
+
+    svgEl.setAttribute("width", "500px");
+    svgEl.setAttribute("height", "100px");
+
+    let lineEl = document.createElementNS(svgNs, "line");
+    lineEl.setAttribute("x1", `${this.startPointX}`);
+    lineEl.setAttribute("x2", `${this.endPointX}`);
+    lineEl.setAttribute("y1", `${this.startPointY}`);
+    lineEl.setAttribute("y2", `${this.endPointY}`);
+    lineEl.setAttribute("stroke", `${this.color}`);
+    lineEl.setAttribute("stroke-width", `${this.width}`);
+
+    svgEl.appendChild(lineEl);
+    svgWrapper.appendChild(svgEl);
+
+    // <line x1="10" x2="50" y1="110" y2="150" stroke="orange" stroke-width="5"/>
+  }
+}
+
+const newSVG = new renderSVG(1, 1, 200, 1, "red", 5);
